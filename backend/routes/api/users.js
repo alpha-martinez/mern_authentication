@@ -45,6 +45,7 @@ router.post('/register', (req, res) => {
       }
     })
   });
+
   
   router.post('/login', (req, res) => {
     const email = req.body.email;
@@ -77,6 +78,16 @@ router.post('/register', (req, res) => {
           }
         });
       }
+    });
+  });
+
+  // GET api/users/current (Private)
+// GET api/users/current (Private)
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+    res.json({
+      id: req.user.id,
+      name: req.user.name,
+      email: req.user.email
     });
   });
   
