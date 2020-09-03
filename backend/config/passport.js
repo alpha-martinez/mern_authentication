@@ -5,6 +5,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const mongoose = require('mongoose');
 const passport = require('passport');
 const { deserializeUser } = require('passport');
+const db = require('../models');
 // const User = mongoose.model('User');
 
 const options = {}
