@@ -9,6 +9,11 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+//passport middleward
+app.use(passport.initialize());
+
+require('./config/passport')(passport)
+
 app.get('/', (req, res) => {
     res.status(200).json({ message: 'Smile, you are on camera '});
 })
@@ -20,3 +25,4 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
 })
+
