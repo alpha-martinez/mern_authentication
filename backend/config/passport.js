@@ -3,16 +3,13 @@ require('dotenv').config();
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const mongoose = require('mongoose');
+const passport = require('passport');
 const { deserializeUser } = require('passport');
 // const User = mongoose.model('User');
 
 const options = {}
-//jwtFromRequest (required) function that accepts a request as the only parameter
-//and returns either the .JWT as a string or null
 
-//fromAuthHeaderAsBearerToken() creates an extractor that looks
-//for the JWT in the auth header
-options.jwtFromRequest = RxtractJwt.fromAuthHeaderAsBearerToken();
+options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = process.env.JWT_SECRET;
 
 
@@ -28,3 +25,4 @@ module.exports = (passport) => {
         })
     }))
 }
+

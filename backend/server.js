@@ -14,13 +14,13 @@ app.use(passport.initialize());
 
 require('./config/passport')(passport)
 
+const users = require('./routes/api/users');
+
 app.get('/', (req, res) => {
     res.status(200).json({ message: 'Smile, you are on camera '});
 })
 
-app.get('/', (req, res) => {
-    res.send('  Backend home route');
-})
+app.use('/api/users', users);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)
